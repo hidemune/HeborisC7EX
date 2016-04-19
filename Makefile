@@ -1,6 +1,6 @@
 CXX          ?= clang++
 INCLUDE_PATH := -I/usr/include/SDL -Isrc/game/ -Isrc/main_sdl -Isrc/
-CXXFLAGS     += -O2 -DLINUX -DSDL_USE_OPENGL $(shell sdl-config --cflags)
+CXXFLAGS     += -O2 -DLINUX $(shell sdl-config --cflags)
 CXXWARNINGS  := -Wno-c++11-compat-deprecated-writable-strings -Wno-format-extra-args \
 				-Wno-invalid-source-encoding -Wno-logical-op-parentheses
 LDLIBS       := -lGL -lSDL -lSDL_mixer -lSDL_image
