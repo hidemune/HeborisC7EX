@@ -4,6 +4,9 @@
 #include "SDL_kanji.h"
 #include "ygs2kfunc.h"
 
+#include <iostream>
+using namespace std;
+
 #define		SCREEN_BPP			0
 #define		USE_SOFTSTRETCH		1
 
@@ -412,22 +415,27 @@ int IsPressJoyKey ( int key )
 {
 	if ( s_pJoyPads[s_iActivePad] )
 	{
+		Uint8 hat = SDL_JoystickGetHat(s_pJoyPads[s_iActivePad], 0);
 		switch ( key )
 		{
 		case 0:		// è„
 			if ( SDL_JoystickGetAxis(s_pJoyPads[s_iActivePad], 1) < -32767 / 4 ) return 1;
+			if ( hat & SDL_HAT_UP) return 1;
 			break;
 
 		case 1:		// â∫
 			if ( SDL_JoystickGetAxis(s_pJoyPads[s_iActivePad], 1) > +32767 / 4 ) return 1;
+			if ( hat & SDL_HAT_DOWN) return 1;
 			break;
 
 		case 2:		// ç∂
 			if ( SDL_JoystickGetAxis(s_pJoyPads[s_iActivePad], 0) < -32767 / 4 ) return 1;
+			if ( hat & SDL_HAT_LEFT) return 1;
 			break;
 
 		case 3:		// âE
 			if ( SDL_JoystickGetAxis(s_pJoyPads[s_iActivePad], 0) > +32767 / 4 ) return 1;
+			if ( hat & SDL_HAT_RIGHT) return 1;
 			break;
 
 		default:
