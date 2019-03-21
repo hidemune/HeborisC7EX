@@ -5,7 +5,7 @@
 #include "ygs2kfunc.h"
 
 #include <iostream>
-using namespace std;
+//using namespace std;
 
 #define		SCREEN_BPP			0
 #define		USE_SOFTSTRETCH		1
